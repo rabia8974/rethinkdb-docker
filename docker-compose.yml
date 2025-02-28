@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  rethinkdb:
+    build: .
+    container_name: rethinkdb_container
+    ports:
+      - "8080:8080"
+      - "28015:28015"
+      - "29015:29015"
+    volumes:
+      - rethinkdb_data:/data
+    command: ["rethinkdb", "--bind", "all"]
+
+volumes:
+  rethinkdb_data:
