@@ -1,0 +1,15 @@
+stages:
+  - build
+  - deploy
+
+
+build:
+  stage: build
+  script:
+   -  docker build -t website .
+deploy:
+   stage: deploy
+   script:
+    - docker stop website || true
+    - docker rm website || true
+    - docker build -d -p 8000:80 --name  -t website website
